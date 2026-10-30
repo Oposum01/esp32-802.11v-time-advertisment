@@ -1,0 +1,59 @@
+// SPDX-License-Identifier: GPL-2.0-only
+// SPDX-FileCopyrightText: 2026 Dr.-Ing. Simon Wunderlich Systementwicklung & Beratung
+// SPDX-FileContributor: Jan Fuchs <jf [at] simonwunderlich . de>
+
+#pragma once
+
+/* Configuration.
+ * Copy to config.h and adjust. config.h is not versioned. */
+
+/* Uplink networks used to fetch the time via NTP, as { SSID, password }.
+ * They are tried in this order until a sync succeeds. Empty password for an
+ * open network, otherwise WPA2-PSK (or better) is required. */
+#define UPLINK_NETWORKS \
+    { "vogtland.freifunk.net", "" }, \
+    /* { "other-network", "password" }, */
+
+/* Hostname sent in DHCP requests on the uplink */
+#define DHCP_HOSTNAME         "ESP32-Time-Advertisment"
+
+/* NTP servers. Leave NTP_SERVER_2 empty to use only one server. */
+#define NTP_SERVER_1          "pool.ntp.org"
+#define NTP_SERVER_2          "ptbtime1.ptb.de"
+
+/* 1: if the uplink DHCP server announces an NTP server (option 42), it is
+ * used first, NTP_SERVER_1/2 are the fallback */
+#define NTP_SERVER_FROM_DHCP  1
+
+/* Time between NTP syncs. The time beacon is paused while syncing. */
+#define NTP_SYNC_INTERVAL_MIN (6 * 60)
+
+/* Answer probe requests (wildcard or own SSID) with probe responses that
+ * also carry Time Advertisement and Time Zone. 0: only beacons, the network
+ * is then practically invisible to phones/laptops (active scan). */
+#define PROBE_RESPONSES       0
+
+/* SSID of the time beacon */
+#define SSID_NETWORKNAME      "ESP32-Time-Advertisment"
+
+/* Time zone as POSIX TZ string, sent verbatim in the Time Zone element.
+ * Includes the daylight saving rule, the receiver applies it. Strings for
+ * other zones: https://github.com/nayarsystems/posix_tz_db/blob/master/zones.csv */
+#define BEACON_TIMEZONE       "CET-1CEST,M3.5.0,M10.5.0/3"
+
+/* Regulatory domain, determines the usable channels */
+#define WIFI_COUNTRY          "DE"
+
+/* Beacon channel. 0: after every NTP sync scan and use the one of 1, 6 and
+ * 11 with the fewest BSSIDs. */
+#define RADIO_CHANNEL         0
+
+/* Beacon interval in TU (1 TU = 1024 us), 15 - 65535. 1000 instead of the
+ * usual 100 on purpose, to keep the airtime used on the channel low. */
+#define BEACON_INTERVAL_TU    1000
+
+/* Maximum TX power in dBm, 2 - 20. A short press on the BOOT button lowers it
+ * in 1 dB steps (from 2 dBm back to 20 dBm), holding it for 3 s resets it to
+ * this value. The value is stored and survives reboots until TX_POWER_DBM is
+ * changed here. */
+#define TX_POWER_DBM          20

@@ -1,0 +1,25 @@
+# SPDX-License-Identifier: GPL-2.0-only
+# SPDX-FileCopyrightText: 2026 Dr.-Ing. Simon Wunderlich Systementwicklung & Beratung
+# SPDX-FileContributor: Jan Fuchs <jf [at] simonwunderlich . de>
+
+menu "Time Advertisement"
+
+    menu "Uplink (NTP source)"
+
+        config UPLINK_CONNECT_TIMEOUT_S
+            int "Timeout for connect + DHCP (s)"
+            default 20
+
+        config NTP_TIMEOUT_S
+            int "Timeout for NTP sync (s)"
+            default 50
+            help
+                Each NTP server gets 15 s before the next one is tried.
+
+        config RETRY_INTERVAL_S
+            int "Retry interval after failed sync (s)"
+            default 120
+
+    endmenu
+
+endmenu
