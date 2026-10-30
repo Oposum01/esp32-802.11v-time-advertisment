@@ -15,7 +15,7 @@
     /* { "other-network", "password" }, */
 
 /* Hostname sent in DHCP requests on the uplink */
-#define DHCP_HOSTNAME         "ESP32-Time-Advertisment"
+#define DHCP_HOSTNAME         "ESP32-Time-Advertisement"
 
 /* NTP servers. Leave NTP_SERVER_2 empty to use only one server. */
 #define NTP_SERVER_1          "pool.ntp.org"
@@ -34,7 +34,7 @@
 #define PROBE_RESPONSES       0
 
 /* SSID of the time beacon */
-#define SSID_NETWORKNAME      "ESP32-Time-Advertisment"
+#define SSID_NETWORKNAME      "ESP32-Time-Advertisement"
 
 /* Time zone as POSIX TZ string, sent verbatim in the Time Zone element.
  * Includes the daylight saving rule, the receiver applies it. Strings for

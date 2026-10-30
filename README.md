@@ -57,12 +57,12 @@ cp main/config.h.example main/config.h
 | Define | Default |
 |---|---|
 | `UPLINK_NETWORKS` | `{ "vogtland.freifunk.net", "" }`: list of `{ SSID, password }`, tried in order until a sync succeeds; empty password ⇒ open network, otherwise WPA2-PSK (or better) |
-| `DHCP_HOSTNAME` | `ESP32-Time-Advertisment` |
+| `DHCP_HOSTNAME` | `ESP32-Time-Advertisement` |
 | `NTP_SERVER_1` / `NTP_SERVER_2` | `pool.ntp.org` / `ptbtime1.ptb.de` (2 empty ⇒ only one) |
 | `NTP_SERVER_FROM_DHCP` | `1` ⇒ NTP server from DHCP option 42 first, the two above as fallback |
 | `NTP_SYNC_INTERVAL_MIN` | `6 * 60` (6 h) |
 | `PROBE_RESPONSES` | `0` (off), `1` ⇒ probe requests are answered |
-| `SSID_NETWORKNAME` | `ESP32-Time-Advertisment` |
+| `SSID_NETWORKNAME` | `ESP32-Time-Advertisement` |
 | `BEACON_TIMEZONE` | `CET-1CEST,M3.5.0,M10.5.0/3` (POSIX TZ, incl. DST rule) |
 | `WIFI_COUNTRY` | `DE` (regulatory domain, usable channels) |
 | `RADIO_CHANNEL` | `0` ⇒ automatic, `1`–`13` ⇒ fixed |
@@ -186,7 +186,7 @@ long notice.
 Copyright (C) 2026 Dr.-Ing. Simon Wunderlich Systementwicklung &
 Beratung (<https://www.simonwunderlich.de/>). Written by Jan Fuchs
 <jf [at] simonwunderlich . de> as work for Simon Wunderlich. Source:
-<https://github.com/Oposum01/esp32-802.11v-time-advertisment>.
+<https://github.com/Oposum01/esp32-802.11v-time-advertisement>.
 
 **Except the case.** The files in `3d-print/` are derived from a CC BY
 design and licensed under CC BY, not the GPL, see [Enclosure](#enclosure).
